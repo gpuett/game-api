@@ -1,6 +1,10 @@
-const gameList = {};
 
 export const InitialState = {
-  currentGameId: null,
-  gamesById: {}
+  currentGameId: 1,
+  gamesById: {
+    1: {
+      title: 'Halo',
+      gameId: 1
+    }
+  }
 };

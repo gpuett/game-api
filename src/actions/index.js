@@ -1,11 +1,6 @@
 import * as types from './../constants/ActionTypes';
 import v4 from 'uuid/v4';
 
-export const changeGame = (newSelectedGameId) => ({
-  type: types.CHANGE_GAME,
-  newSelectedGameId
-});
-
 export const requestGame = (title, localGameId) => ({
   type: types.REQUEST_GAME,
   title,
@@ -34,7 +29,7 @@ export function fetchGameId(title) {
     if (json.length > 0) {
       const gameId = json[0].id
       console.log(gameId);
-      fetchGameInfo(gameId, dispatch);
+      fetchGameInfo(gameId, title, dispatch);
     } else {
       console.log('We couldn\'t locate a song under that ID!');
     }
@@ -42,7 +37,7 @@ export function fetchGameId(title) {
   }
 }
 
-export function fetchGameInfo(localGameId, dispatch) {
+export function fetchGameInfo(localGameId, title, dispatch) {
   return fetch('https://api-endpoint.igdb.com/games/' + localGameId, {
     headers: {
       'user-key': 'd54cef6af94d47e1df51afe1c3d7c472'
@@ -55,7 +50,6 @@ export function fetchGameInfo(localGameId, dispatch) {
       let title = json[0].name;
       console.log(title);
       dispatch(receiveGame(title, localGameId));
-      dispatch(changeGame(localGameId));
     } else {
       console.log('We couln\'t locate that game!');
     }

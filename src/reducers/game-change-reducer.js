@@ -1,12 +1,10 @@
 import constants from './../constants';
 const { InitialState, types } = constants;
 
-const gameChangeReducer = (state = InitialState.gameById, action) => {
+const gameChangeReducer = (state = InitialState.gamesById, action) => {
   let newGamesByIdEntry;
   let newGamesByIdStateSlice;
   switch (action.type) {
-    case types.CHANGE_GAME:
-      return action.newSelectedGameId;
     case types.REQUEST_GAME:
       newGamesByIdEntry = {
         isFetching: true,

@@ -1,5 +1,4 @@
 import React from 'react';
-import GameList from './GameList';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,7 +6,7 @@ import { connect } from 'react-redux';
 function Display() {
   return(
     <div>
-      <GameList />
+
 
     </div>
   )

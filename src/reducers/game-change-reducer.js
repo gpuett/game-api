@@ -5,11 +5,15 @@ const gameChangeReducer = (state = InitialState.gamesById, action) => {
   let newGamesByIdEntry;
   let newGamesByIdStateSlice;
   switch (action.type) {
+    case types.CHANGE_GAME:
+      return action.newSelectedGameId;
     case types.REQUEST_GAME:
       newGamesByIdEntry = {
         isFetching: true,
         title: action.title,
-        gameId: action.gameId
+        gameId: action.gameId,
+        summary: action.summary,
+        image: action.image
       };
       newGamesByIdStateSlice = Object.assign({}, state, {
         [action.gameId]: newGamesByIdEntry
@@ -21,7 +25,7 @@ const gameChangeReducer = (state = InitialState.gamesById, action) => {
         receivedAt: action.receivedAt,
         title: action.title,
         image: action.image,
-        review: action.review,
+        summary: action.summary,
         gameArray: action.gameArray,
         arrayPosition: 0,
         gameId: action.gameId

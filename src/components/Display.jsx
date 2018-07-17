@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-function Display() {
+function Display({dispatch, game}) {
+  const {name, id} = game;
   return(
     <div>
-
-
+      <h1>{name}</h1>
     </div>
   )
 }
@@ -20,21 +20,11 @@ Display.propTypes = {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
-  // const game = state.gamesById[state.currentGameId];
-  // if (!state.gamesById[state.currentGameId].isFetching) {
-  //   info = {
-  //     id: state.currentGameId,
-  //     title: game.title
-  //   };
-  // } else {
-  //   info = {
-  //     title: ''
-  //   };
-  // }
+
   return {
-    state
+    game: state
   }
 }
+
 
 export default connect(mapStateToProps)(Display);

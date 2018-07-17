@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeGame } from './../actions';
 
 function GameList({dispatch, gameList}) {
   return(
     <div>
       <h3>Search History</h3>
-      {Object.keys(gameList).map(gameId => {
-        let game = gameList[gameId];
-        return <li key = {gameId} onClick = {() => {
-            dispatch(changeGame(gameId));
-          }}>
-          {game.title}</li>;
-      })}
-
+      {Object.keys(gameList)
+        .filter(gameId => gameList[gameId].title)
+        .map(game => <p key={game}>{gameList[game].title}</p>)}
     </div>
   );
 };
@@ -26,6 +20,7 @@ GameList.propTypes = {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     gameList: state
   };

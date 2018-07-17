@@ -5,6 +5,8 @@ const gameChangeReducer = (state = InitialState.gamesById, action) => {
   let newGamesByIdEntry;
   let newGamesByIdStateSlice;
   switch (action.type) {
+    case types.CHANGE_GAME:
+      return action.newSelectedGameId;
     case types.REQUEST_GAME:
       newGamesByIdEntry = {
         isFetching: true,

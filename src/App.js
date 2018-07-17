@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Display from './components/Display'
+import Display from './components/Display';
+import GameList from './components/GameList';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="App">
         <Header/>
         <Display />
+        <GameList />
       </div>
     );
   }

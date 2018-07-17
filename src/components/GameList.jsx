@@ -8,7 +8,12 @@ function GameList({dispatch, gameList}) {
       <h3>Search History</h3>
       {Object.keys(gameList)
         .filter(gameId => gameList[gameId].title)
-        .map(game => <p key={game}>{gameList[game].title}</p>)}
+        .map(game =>
+          <div>
+            <p key={game}>{gameList[game].title}</p>
+            <p>{gameList[game].summary}</p>
+            <img src={gameList[game].image}/>
+          </div>)}
     </div>
   );
 };
@@ -20,7 +25,7 @@ GameList.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
+
   return {
     gameList: state
   };

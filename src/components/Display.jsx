@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 
 function Display({dispatch, game}) {
-  const {name, id} = game;
+  const {title, id, summary, image} = game;
   return(
     <div>
-      <h1>{name}</h1>
+      <h1>{title}</h1>
+      <p>{summary}</p>
     </div>
   )
 }
@@ -20,7 +21,23 @@ Display.propTypes = {
 }
 
 const mapStateToProps = state => {
-
+  let info;
+  console.log(state);
+  const game = state[state.currentGameId];
+  // if (!state[state.currentGameId].isFetching) {
+  //   info = {
+  //     id: state.currentGameId,
+  //     title: game.title,
+  //     summary: game.summary,
+  //     image: game.image
+  //   };
+  // } else {
+  //   info = {
+  //     title: '',
+  //     summary: '',
+  //     image: ''
+  //   };
+  // }
   return {
     game: state
   }
